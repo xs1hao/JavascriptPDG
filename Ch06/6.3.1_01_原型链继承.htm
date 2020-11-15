@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototype Chaining Example</title>
+    <script type="text/javascript">
+                    
+        function SuperType(){
+            this.property = true;
+        }
+        
+        SuperType.prototype.getSuperValue = function(){
+            return this.property;
+        };
+        
+        function SubType(){
+            this.subproperty = false;
+        }
+        
+        // inherit from SuperType
+        // SubType.prototype 是 SuperType的实例；那么property自然就位于该实例中；
+        // SubType 实例被重写；
+        SubType.prototype = new SuperType();
+        
+        SubType.prototype.getSubValue = function (){
+            return this.subproperty;
+        };
+        
+        var instance = new SubType();
+        alert(instance.getSuperValue());   //true
+       
+       /*** 确定原型和实例之间的关系 *************************************/
+        //    1、使用instanceof 操作符；
+        alert(instance instanceof Object);      //true
+        alert(instance instanceof SuperType);   //true
+        alert(instance instanceof SubType);     //true
+
+        // 2、使用 isPrototypeOf() 
+        alert(Object.prototype.isPrototypeOf(instance));    //true
+        alert(SuperType.prototype.isPrototypeOf(instance)); //true
+        alert(SubType.prototype.isPrototypeOf(instance));   //true
+       /*** 确定原型和实例之间的关系 ************************************/
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

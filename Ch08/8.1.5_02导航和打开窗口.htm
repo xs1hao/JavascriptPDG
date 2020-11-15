@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Open Example 2</title>
+</head>
+<body>
+    <script type="text/javascript">
+    
+        function openNewWindow(){
+            var win = window.open('http://www.wrox.com/', 'wroxWindow', 'width=300,height=300,left=10,top=10');
+            win.resizeTo(500,500);
+            win.moveTo(100,100);
+        }
+
+        /** 
+        * window.open() 接收4个参数；
+        * 1、打开的url地址；
+        * 2、已有窗口或者框架的名称，如果该参数是已有框架的名称，那么就会在具有该名称的窗口或者框架中加载 第一个参数指定的url;否则就会打开一个新的窗口；另* 外指定如下特殊名称： _self,_parent,_top或_blank; 都会打开一个新窗口；
+        * 3、第三个参数；是新窗口的大小及位置等属性的设置，字符串格式；
+        * 4、第四个参数： replace  Optional.Specifies规定了装载到窗口的 URL 是在窗口的浏览历史中创建一个新条目，还是替换浏览历史中的当前条目。支持下面* 的值 true - URL 替换浏览历史中的当前条目；false - URL 在浏览历史中创建新的条目。
+        */
+        
+        window.open("http://www.wrox.com");
+    </script>
+    <p>This will open a new window/tab:
+    <input type="button" value="Go to Wrox.com" onclick="openNewWindow()" /></p>
+ 
+</body>
+</html>

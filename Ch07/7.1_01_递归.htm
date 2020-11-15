@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recursion Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+            // 阶乘函数
+            function factorial(num){
+                if (num <= 1){
+                    return 1;
+                } else {
+                    // return num * factorial(num-1);
+                    return num * arguments.callee(num-1);
+                }
+            }
+
+            var anotherFactorial = factorial;
+            factorial = null;
+            console.log(anotherFactorial(4));  //error!
+
+
+        </script>
+     
+    </body>
+</html>

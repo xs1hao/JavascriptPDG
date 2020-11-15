@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Node Example 3</title>
+    <style type="text/css">
+        .message {
+            font-weight: bold;
+            color: #0f0;
+        }
+    
+    </style>
+</head>
+<body>
+    <input type="button" value="Add Node" onclick="addNode()">
+
+    <script type="text/javascript">
+        function addNode(){
+        
+            /**
+             * 创建DOM节点；
+             * **/
+            var element = document.createElement("div");
+            element.className = "message";
+            /**
+             * 创建文本节点；
+             * **/
+            var textNode = document.createTextNode("Hello world!");
+            element.appendChild(textNode);
+            
+            document.body.appendChild(element);
+        }
+
+    </script>
+</body>
+</html>

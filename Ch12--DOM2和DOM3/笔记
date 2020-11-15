@@ -1,0 +1,5 @@
+概念区分：
+    1、scrollHeight 元素的总高； scrollTop 在隐藏在内容上放的像素，通过这个可以设置滚动条的滚动位置
+        scrollHeight 始终会大于等于 scrollTop; 
+        => scrollHeight >= scrollTop
+    2、同理，scrollWidth >= scrollLeft;

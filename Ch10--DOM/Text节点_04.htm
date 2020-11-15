@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Node Example 3</title>
+    <style type="text/css">
+        .message {
+            font-weight: bold;
+            color: #0f0;
+        }
+    
+    </style>
+</head>
+<body>
+    <input type="button" value="Add Node" onclick="addNode()">
+
+    <script type="text/javascript">
+        function addNode(){
+        
+            var element = document.createElement("div");
+            element.className = "message";
+            
+            var textNode = document.createTextNode("Hello world!");
+            element.appendChild(textNode);
+            
+            var anotherTextNode = document.createTextNode("Yippee!");
+            element.appendChild(anotherTextNode);
+            /**
+             * 如果两个文本节点是相邻节点，那么这两个节点的文本就会连起来显示，中间不会有空格；
+             * **/
+            document.body.appendChild(element);
+        }
+
+    </script>
+</body>
+</html>

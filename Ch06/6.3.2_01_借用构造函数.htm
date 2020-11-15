@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Constructor Stealing Example</title>
+    <script type="text/javascript">
+
+    /**
+     * 解决原型链中引用类型的问题 ↓↓↓↓↓↓  借用构造函数的技术；
+     * 
+     * **/
+                    
+        function SuperType(){
+            this.colors = ["red", "blue", "green"];
+        }
+
+        function SubType(){  
+            //inherit from SuperType
+            SuperType.call(this); // “借调”了超类型的构造函数；
+        }
+
+        var instance1 = new SubType();
+        instance1.colors.push("black");
+        alert(instance1.colors);    //"red,blue,green,black"
+        
+        var instance2 = new SubType();
+        alert(instance2.colors);    //"red,blue,green"
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

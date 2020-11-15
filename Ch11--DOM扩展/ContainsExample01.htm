@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contains Example</title>
+</head>
+<body>
+
+    <input type="button" value="Does html contain body?" onclick="getContains()">
+
+    <script type="text/javascript">
+        function getContains(){
+            // 判断某个节点是不是另一个节点的后代；
+            alert(document.documentElement.contains(document.body)); //true
+            
+        }
+
+    </script>
+</body>
+</html>

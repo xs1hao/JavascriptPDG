@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IE Event Object Example</title>
+</head>
+<body>
+    <a href="http://www.nczonline.net/" id="myLink">Click Me</a>
+    <p>This link will not navigate when clicked.</p>
+    <p>This example only works in Internet Explorer.</p>
+    <script type="text/javascript">
+        var link = document.getElementById("myLink");
+        link.onclick = function(){
+            window.event.returnValue = false;
+        };    
+        /**
+         * returnValue 相当于 DOM 中的preventDefault() 方法； 作用都是取消给定事件的默认行为；
+         * **/
+    </script>
+</body>
+</html>

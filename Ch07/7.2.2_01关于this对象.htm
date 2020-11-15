@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>This Object Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var name = "The Window";
+        
+        var object = {
+            name : "My Object",
+        
+            getNameFunc : function(){
+                return this.name;
+                // return function(){
+                //     return this.name;
+                // };
+            }
+        };
+        // 匿名函数的执行环境具有全局性；
+        // console.log(object.getNameFunc()());  //"The Window"； 为什么匿名函数没有取得气保焊作用域的this？
+        console.log(object.getNameFunc());  // "My Object"
+
+        var test = function() {
+            var name = 'shiqiang';
+            console.log('this.name:',this.name);  //"The Window"；
+        }
+        test();
+
+        function test1() {
+            var name = '王二小';
+            console.log('this.name:',this.name);  //"The Window"；
+        }
+        test1();
+
+    </script>
+ 
+</body>
+</html>

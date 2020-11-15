@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototypal Inheritance Example</title>
+    <script type="text/javascript">
+                          
+        /**
+         * Object.create() 方法与 Object.defineProperties() 方法参数格式相同；
+         * 以第二个参数 指定的任何属性，都会覆盖原型对象上的同名属性；
+         * **/
+        var person = {
+            name: "Nicholas",
+            friends: ["Shelby", "Court", "Van"]
+        };
+                           
+        var anotherPerson = Object.create(person, {
+            name: {
+                value: "Greg"
+            }
+        });
+        
+        alert(anotherPerson.name);  //"Greg"
+
+
+               
+        
+    </script>
+</head>
+<body>
+<p>Note: this example only works in browsers that have implemented the ECMAScript 5 <code>Object.defineProperty()</code> method (IE9, Firefox 4, and Chrome 7).</p>
+
+</body>
+</html>

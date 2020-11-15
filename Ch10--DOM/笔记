@@ -1,0 +1,12 @@
+第十章 DOM
+    DOM树中插入节点
+        1）someNode.appendChild(); 在someNode 节点后添加一个节点；
+        2）someNode.insertBefore(); 在someNode 节点前插入一个节点；接收两个参数：要插入的节点和作为参照的节点；
+        3）someNode.replaceChild(); 使用新加入的节点 替换原有的节点；
+        4）someNode.removeChilde(); 移除父节点中的一个子节点；
+        另外两个不常用的方法：
+        1）cloneNode(); 接收1个参数，true/false，表示是否深刻拷贝节点；
+            深拷贝会拷贝当前节点及其子节点；
+        2）normalize(); 合并文档树中的文本节点；
+        3）splitText(); 分割文本节点；
+    Javascript通过document类型表示文档，document是HTMLDocument（继承自Document类型）的一个实例，表示HTML页面。

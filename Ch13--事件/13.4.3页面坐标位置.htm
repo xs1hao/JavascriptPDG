@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client coordinates Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv" style="background-color:red;height:10000px;width:100px">Click me</div>
+    <script>
+        var div = document.getElementById("myDiv");
+        /**
+         * 在页面没有滚动的情况下：
+         * pageX和pageY 的值 与clientX和clientY的值相等；
+         * **/
+        EventUtil.addHandler(div, "click", function(event){
+            event = EventUtil.getEvent(event);
+            var pageX = event.pageX,
+                pageY = event.pageY;
+        
+            if (pageX === undefined){
+                pageX = event.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+            }
+        
+            if (pageY === undefined){
+                pageY = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
+            }
+        
+            console.log("Page coordinates: " + event.pageX + "|" + pageX + "," + event.pageY + "|"+pageY);        
+        });
+
+    </script>
+</body>
+</html>

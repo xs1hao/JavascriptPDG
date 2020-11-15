@@ -1,0 +1,22 @@
+1、DOM0级事件处理：
+    div.onclick = function() {};
+2、DOM2级事件处理
+    div.addEventListener('click',function() {
+
+    },false);
+3、IE事件处理
+    div.attachEvent("onclick",function() {});
+如上都有对应的事件移除方式：
+    1、div.onclick = null;
+    2、div.removeEventListener('click', function(){},false);
+    3、div.detachEvent("onclick",function() {});
+4、对比 addEventListener 与 attachEvent：
+    1、他们的作用范围不一样，addEventListener 中的 function 内this指向的是当前事件源；而attachEvent 则是指向了window
+    2、同一元素上添加的名事件，addEventListener 添加的事件按照代码顺序依次执行；而attachEvent 与addEventListener相反；
+5、IE中的事件对象获取方法（根据事件处理程序的方式）；
+    1、Dom0级处理方法
+        event对象绑定在window上；
+    2、在使用attachEvent() 或者 detachEvent 时：
+        event对象作为一个参数对传入事件处理函数中；
+        
+    

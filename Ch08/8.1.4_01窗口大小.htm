@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Size Example</title>
+</head>
+<body>
+    <p>Hello world!</p>
+    <script type="text/javascript">
+
+        var pageWidth = window.innerWidth,
+            pageHeight = window.innerHeight;
+
+        // window.outerHeight 浏览器高度 （包含浏览器边框），即浏览器本身的尺寸；
+        // window.innerHeight 浏览器可视高度；
+        // window 对象上不存在 clientHeight;
+            
+        if (typeof pageWidth != "number"){
+            if (document.compatMode == "CSS1Compat"){
+                pageWidth = document.documentElement.clientWidth;
+                pageHeight = document.documentElement.clientHeight;
+            } else {
+                pageWidth = document.body.clientWidth;
+                pageHeight = document.body.clientHeight;
+            }
+        }
+        // document.documentElement 度量的是布局视口；
+
+        console.log("Width: " + pageWidth);
+        console.log("Height: " + pageHeight);
+    </script>
+</body>
+</html>

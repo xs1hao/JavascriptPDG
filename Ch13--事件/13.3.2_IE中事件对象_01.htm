@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IE Event Object Example</title>
+</head>
+<body>
+    <input type="button" id="myBtn" value="Click Me" />
+    <p>This example only works in Internet Explorer.</p>
+    <script type="text/javascript">
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(){
+            console.log(window.event.srcElement === this);      //true
+        };
+        
+        btn.attachEvent("onclick", function(event){
+            console.log(event.srcElement === this);             //false
+        });
+      
+        /**
+         * 事件处理程序的作用域是根据他的指定的方式来确定的，所以不能认为this会始终等于事件目标。
+         * 因此，最保险的是使用event.srcElement
+         * **/
+    </script>
+</body>
+</html>

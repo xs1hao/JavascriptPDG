@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Event Flow Example</title>
+    <script type="text/javascript">
+    
+        window.onload = function(){
+            window.addEventListener("click", function(){
+                console.log("Window (capture)");
+            }, true);
+            window.addEventListener("click", function(e){
+                console.log("Window (bubble)");
+            }, false);
+            
+            document.addEventListener("click", function(){
+                console.log("Document (capture)");
+            }, true);
+            document.addEventListener("click", function(){
+                console.log("Document (bubble)");
+            }, false);
+            
+            document.getElementsByTagName("html")[0].addEventListener("click", function(){
+                console.log("Html (capture)");
+            }, true);
+            document.getElementsByTagName("html")[0].addEventListener("click", function(){
+                console.log("Html (bubble)");
+            }, false);
+            
+            document.body.addEventListener("click", function(){
+                console.log("Body (capture)");
+            }, true);
+            document.body.addEventListener("click", function(){
+                console.log("Body (bubble)");
+            }, false);
+            
+            document.getElementById("myDiv").addEventListener("click", function(){
+                console.log("Div (capture)");
+            }, true);
+            document.getElementById("myDiv").addEventListener("click", function(e){
+                console.log("Div (bubble)");
+            }, false);
+
+        }
+    
+
+    </script>
+</head>
+<body>
+    <div id="myDiv">Click Me</div>
+    <p>This won't work in Internet Explorer.</p>
+    
+</body>
+</html>

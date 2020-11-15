@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Constructor Stealing Example</title>
+    <script type="text/javascript">
+                    
+        /**
+         * 在子类构造函数中像超类型构造函数传递参数；
+         * **/
+        function SuperType(name){
+            this.name = name;
+        }
+
+        function SubType(){  
+            //inherit from SuperType passing in an argument
+            /**
+             * 这样做的问题是，在超类型中的原型定义的方法，对子类是不可见的，结果是所有类型都只能使用构造函数模式；
+             * 没有复用性；
+             * **/
+            SuperType.call(this, "Nicholas");
+            
+            
+            //instance property
+            this.age = 29;
+        }
+
+        var instance = new SubType();
+        console.log(instance.name);    //"Nicholas";
+        console.log(instance.age);     //29
+
+        var instance1 = new SuperType();
+        console.log(instance1.name); // undefined
+       
+        var instance2 = new SuperType('super_qiang');
+        console.log('instance2.name:',instance2.name); // super_qiang
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

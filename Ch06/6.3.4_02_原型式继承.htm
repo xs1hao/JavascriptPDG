@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototypal Inheritance Example</title>
+    <script type="text/javascript">
+                            
+        var person = {
+            name: "Nicholas",
+            friends: ["Shelby", "Court", "Van"]
+        };
+        /**
+         * Object.creat() 方法规范化了原型式继承；
+         * 这个方法接收两个参数：
+         * 1个用作新对象原型的对象；
+         * 1个（可选）为新对象定义额外属性的对象；
+         * **/
+        var anotherPerson = Object.create(person);
+        anotherPerson.name = "Greg";
+        anotherPerson.friends.push("Rob");
+        
+        var yetAnotherPerson = Object.create(person);
+        yetAnotherPerson.name = "Linda";
+        yetAnotherPerson.friends.push("Barbie");
+        
+        console.log(person.friends);   //"Shelby,Court,Van,Rob,Barbie"
+
+               
+        
+    </script>
+</head>
+<body>
+<p>Note: this example only works in browsers that have implemented the ECMAScript 5 <code>Object.defineProperty()</code> method (IE9, Firefox 4, and Chrome 7).</p>
+
+</body>
+</html>

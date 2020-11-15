@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Bubbling Example</title>
+    <script type="text/javascript">
+    
+        window.onload = function(){
+            window.onclick = function(){
+                console.log("Window");
+            };
+            
+            document.onclick = function(){
+                console.log("Document");
+            };
+            
+            document.documentElement.onclick = function(){
+                console.log("Html");
+            };
+            
+            document.body.onclick = function(){
+                console.log("Body");
+            };
+            document.getElementById("myDiv").onclick = function(){
+                console.log("Div");
+            };
+        }
+    
+
+    </script>
+</head>
+<body>
+    <div id="myDiv">Click Me</div>
+
+    
+</body>
+</html>
