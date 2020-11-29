@@ -26,18 +26,18 @@
         };
         
         var instance = new SubType();
-        alert(instance.getSuperValue());   //true
+        console.log(instance.getSuperValue());   //true
        
        /*** 确定原型和实例之间的关系 *************************************/
         //    1、使用instanceof 操作符；
-        alert(instance instanceof Object);      //true
-        alert(instance instanceof SuperType);   //true
-        alert(instance instanceof SubType);     //true
+        console.log(instance instanceof Object);      //true
+        console.log(instance instanceof SuperType);   //true
+        console.log(instance instanceof SubType);     //true
 
         // 2、使用 isPrototypeOf() 
-        alert(Object.prototype.isPrototypeOf(instance));    //true
-        alert(SuperType.prototype.isPrototypeOf(instance)); //true
-        alert(SubType.prototype.isPrototypeOf(instance));   //true
+        console.log(Object.prototype.isPrototypeOf(instance));    //true
+        console.log(SuperType.prototype.isPrototypeOf(instance)); //true
+        console.log(SubType.prototype.isPrototypeOf(instance));   //true
        /*** 确定原型和实例之间的关系 ************************************/
         
     </script>

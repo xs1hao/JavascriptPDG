@@ -10,24 +10,24 @@
          * 2、在创建子类实例时，不能像超类型的构造函数传递参数；
          * ===>> 在实践中很少使用原型链；
          * **/
-        function SuperType(){
-            this.colors = ["red", "blue", "green"]; // superType 中的一个 引用类型值 colors;
+        function Animal(){
+            this.colors = ["red", "blue", "green"]; // Animal 中的一个 引用类型值 colors;
         }
 
-        function SubType(){            
+        function Person(){            
         }
         
-        //inherit from SuperType
+        //inherit from Animal
         // 通过原型实现继承，原型实际上会变成另一个类型的实例；
-        // SuperType.prototype 成了 SubType的实例 ；
-        SubType.prototype = new SuperType();
+        // Animal.prototype 成了 Person的实例 ；
+        Person.prototype = new Animal();
 
-        var instance1 = new SubType();
+        var instance1 = new Person();
         instance1.colors.push("black");
         alert(instance1.colors);    //"red,blue,green,black"
         
         // 原先的实例属性成了 instance2 的原型属性；
-        var instance2 = new SubType();
+        var instance2 = new Person();
         alert(instance2.colors);    //"red,blue,green,black"
         
         
