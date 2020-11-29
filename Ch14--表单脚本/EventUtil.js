@@ -43,6 +43,7 @@ var EventUtil = {
         }
     },
     
+    // 获取剪切板内容；
     getClipboardText: function(event){
         var clipboardData =  (event.clipboardData || window.clipboardData);
         return clipboardData.getData("text");

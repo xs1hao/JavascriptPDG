@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Textbox Tab Forward Example</title>
+		<script type="text/javascript" src="EventUtil.js"></script>
+	</head>
+	<body>
+		<p style="font-weight: 600">自动切换焦点</p>
+		<form method="post" action="http://www.nczonline.net">
+            <p>Enter your telephone number:</p>
+            <p>
+                input 框属性
+                <br> 1、value 属性规定输入字段的初始值：
+                <br> 2、readonly 属性规定输入字段为只读（不能修改）
+                <br> 3、disabled 属性规定输入字段是禁用的。被禁用的元素是不可用和不可点击的。被禁用的元素不会被提交。
+                <br> 4、size 属性规定输入字段的尺寸（以字符计）：
+                <br> 5、maxlength 属性规定输入字段允许的最大长度：
+                
+                <h3>HTML5 属性</h3>
+                <strong>
+                    HTML5 为 input 增加了如下属性：
+                </strong>
+
+                <br> autocomplete
+                <br> autofocus
+                <br> form
+                <br> formaction
+                <br> formenctype
+                <br> formmethod
+                <br> formnovalidate
+                <br> formtarget
+                <br> height 和 width
+                <br> list
+                <br> min 和 max
+                <br> multiple
+                <br> pattern (regexp)
+                <br> placeholder
+                <br> required
+                <br> step
+                并为 <pre>form</pre> 增加如需属性：
+
+                autocomplete
+                novalidate
+                            </p>
+			<input
+				type="text"
+				name="tel1"
+				id="txtTel1"
+				size="3"
+				maxlength="3"
+			/>
+			<input
+				type="text"
+				name="tel2"
+				id="txtTel2"
+				size="3"
+				maxlength="3"
+			/>
+			<input
+				type="text"
+				name="tel3"
+				id="txtTel3"
+				size="4"
+				maxlength="4"
+			/>
+
+			<input type="submit" value="Submit" />
+		</form>
+		<script type="text/javascript">
+			(function () {
+				function tabForward(event) {
+					event = EventUtil.getEvent(event)
+					var target = EventUtil.getTarget(event)
+
+					if (target.value.length == target.maxLength) {
+						var form = target.form
+
+						for (
+							var i = 0, len = form.elements.length;
+							i < len;
+							i++
+						) {
+							if (form.elements[i] == target) {
+								if (form.elements[i + 1]) {
+									form.elements[i + 1].focus()
+								}
+								return
+							}
+						}
+					}
+				}
+
+				var textbox1 = document.getElementById('txtTel1'),
+					textbox2 = document.getElementById('txtTel2'),
+					textbox3 = document.getElementById('txtTel3')
+
+				EventUtil.addHandler(textbox1, 'keyup', tabForward)
+				EventUtil.addHandler(textbox2, 'keyup', tabForward)
+				EventUtil.addHandler(textbox3, 'keyup', tabForward)
+			})()
+		</script>
+	</body>
+</html>

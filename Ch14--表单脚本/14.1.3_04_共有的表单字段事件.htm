@@ -6,7 +6,7 @@
 </head>
 <body>
     <p>The textbox will receive focus as soon as the page loads. You can then start typing.</p>
-    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">        
+    <form method="post" action="javascript:console.log('Form submitted!')" id="myForm">        
         <div>
             <label for="comments">Type numbers:</label><br />
             <input type="text" id="txtNumbers" name="numbers" />
@@ -27,14 +27,19 @@
             EventUtil.addHandler(textbox, "blur", function(event){
                 event = EventUtil.getEvent(event);
                 var target = EventUtil.getTarget(event);
-                
-                if (/[^\d]/.test(target.value)){
+
+                if (/[^\d]/.test(target.value)){ // 这句话的意思是：不是数字就把背景换成红色；
+                    // [^\d] 不匹配 这个集合中的一个数字；
                     target.style.backgroundColor = "red";
                 } else {
                     target.style.backgroundColor = "";
                 }
             });
 
+            /**
+             * change事件，对于input 和 textarea 元素，在他们失去焦点且value改变时，触发；
+             * 对于select 元素，在其他选项改变时触发；
+             * **/
             EventUtil.addHandler(textbox, "change", function(event){
                 event = EventUtil.getEvent(event);
                 var target = EventUtil.getTarget(event);

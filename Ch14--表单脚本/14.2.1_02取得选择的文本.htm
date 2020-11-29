@@ -6,7 +6,7 @@
 </head>
 <body>
     <p>Select some text in the textbox.</p>
-    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">        
+    <form method="post" action="javascript:console.log('Form submitted!')" id="myForm">        
         <div>
             <label for="comments">Type something:</label><br>
             <input type="text" id="txtStuff" name="stuff" value="Default value">
@@ -21,6 +21,10 @@
                     return textbox.value.substring(textbox.selectionStart, 
                             textbox.selectionEnd);                
                 } else if (document.selection){
+                    /**
+                     * document.selection
+                     * 其中保存着用户在整个文档范围内选择的文本信息；
+                     * **/
                     return document.selection.createRange().text;
                 }
             }
@@ -29,7 +33,7 @@
                 var textbox = document.forms[0].elements[0];
     
                 EventUtil.addHandler(textbox, "select", function(event){
-                    alert(getSelectedText(textbox));
+                    console.log(getSelectedText(textbox));
                 });
     
                 textbox.focus();

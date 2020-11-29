@@ -5,7 +5,7 @@
     <script type="text/javascript" src="EventUtil.js"></script>
 </head>
 <body>
-    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">
+    <form method="post" action="javascript:console.log('Form submitted!')" id="myForm">
         <ul>
             <li><input type="radio" name="color" value="red">Red</li>
             <li><input type="radio" name="color" value="green">Green</li>
@@ -15,7 +15,7 @@
         <button type="button">Whatever</button>
     </form>     
     <script type="text/javascript">
-        (function(){
+        (function(){ 
             var form = document.forms[0];
             
             //Code to prevent multiple form submissions
@@ -27,7 +27,7 @@
                 var btn = target.elements["submit-btn"];
             
                 //disable it
-                btn.disabled = true;
+                btn.disabled = true; // 禁用当前字段；
                 
             });
 

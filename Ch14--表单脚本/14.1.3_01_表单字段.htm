@@ -5,7 +5,7 @@
     <script type="text/javascript" src="EventUtil.js"></script>
 </head>
 <body>
-    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">
+    <form method="post" action="javascript:console.log('Form submitted!')" id="myForm">
         <ul>
             <li><input type="radio" name="color" value="red">Red</li>
             <li><input type="radio" name="color" value="green">Green</li>
@@ -15,13 +15,20 @@
     <script type="text/javascript">
         (function(){
             var form = document.getElementById("myForm");
+
+            console.log('表单的elments：',form.elements);
             
             var colorFields = form.elements["color"];
-            alert(colorFields.length);  //3
+            /**
+                每个表单都有elements属性，他是表单中所有表单元素字段的集合；
+                他是一个有序表；每个表单字段在elements中出现的顺序，与他们在表单中的位置对应；
+                可以通过name 特性来访问他们；
+            **/
+            console.log(colorFields.length);  //3
             
             var firstColorField = colorFields[0];
             var firstFormField = form.elements[0];
-            alert(firstColorField === firstFormField);   //true
+            console.log(firstColorField === firstFormField);   //true
 
         })();
 
