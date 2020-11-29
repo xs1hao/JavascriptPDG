@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Selectbox Example</title>
+        <title>Selectbox Example</title>
+        <style>
+            input{
+                display: block;
+                margin-bottom: 10px;
+            }
+        </style>
 		<script type="text/javascript" src="EventUtil.js"></script>
 	</head>
 	<body>
 		<form
 			method="post"
-			action="javascript:alert('Form submitted!')"
+			action="javascript:console.log('Form submitted!')"
 			id="myForm"
 		>
 			<div>
 				<label for="selLocation">Where do you want to live ?</label>
 				<br />
 				<select name="location" id="selLocation" style="display: block">
-					<option value="Sunnyvale, CA">Sunnyvale</option>
-					<option value="Los Angeles, CA">Los Angeles</option>
-					<option value="Mountain View, CA">Mountain View</option>
+					<option value="小红1">小红</option>
+					<option value="小明2">小明</option>
+					<option value="小强3">小强</option>
 					<option value="">China</option>
 					<option>Australia</option>
 				</select>
@@ -47,17 +53,18 @@
 					btn3 = document.getElementById('btnSelected'),
 					selectbox = document.getElementById('selLocation')
 
-				EventUtil.addHandler(btn1, 'click', function (event) {
+				EventUtil.addHandler(btn1, 'click', function (event) { // 设置 下拉框的选项；
 					selectbox.selectedIndex = 0
 				})
-				EventUtil.addHandler(btn2, 'click', function (event) {
+				EventUtil.addHandler(btn2, 'click', function (event) { // 设置 下拉框的选项；
 					selectbox.selectedIndex = 1
 				})
 				EventUtil.addHandler(btn3, 'click', function (event) {
 					var selIndex = selectbox.selectedIndex
 					var selOption = selectbox.options[selIndex]
-					alert(
-						'Selected index: ' +
+					console.log(
+                        '获取选中是内容信息：'+
+						'\nSelected index: ' +
 							selectbox.selectedIndex +
 							'\nSelected text: ' +
 							selOption.text +

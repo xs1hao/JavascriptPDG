@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Input Field Email Example</title>
+		<script type="text/javascript" src="EventUtil.js"></script>
+	</head>
+	<body>
+		<p>
+			Try submitting the following form without entering an email address.
+			This only works in HTML5-compliant browsers.
+		</p>
+		<script>
+			;(function () {
+				var message =
+						'Your browser does not support the email input type.',
+					input = document.createElement('input')
+
+				input.type = 'email'
+
+				if (input.type == 'email') {
+					message = 'Your browser supports the email input type'
+				}
+				document.write('<p>' + message + '</p>')
+			})()
+		</script>
+		<form
+			method="post"
+			action="javascript:console.log('Form submitted!')"
+			id="myForm"
+		>
+			<label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+
+            <br>
+            <br>
+			<label for="url">url:</label>
+            <input type="url" name="url" id="url" required />
+            <br>
+            <br>
+            
+            <input type="submit" value="提交表单"" /><br />
+            <br>
+            
+            <input type="button" value="Check Validity" id="btnCheck" />
+            <br>
+            <br>
+            
+			<input type="button" value="Will Validate?" id="btnWill" />
+		</form>
+		<script>
+			EventUtil.addHandler(
+				document.getElementById('btnCheck'),
+				'click',
+				function (event) {
+					console.log(document.forms[0].elements[0].checkValidity())
+				}
+			)
+			EventUtil.addHandler(
+				document.getElementById('btnWill'),
+				'click',
+				function (event) {
+					console.log(document.forms[0].elements[0].willValidate)
+				}
+			)
+
+			EventUtil.addHandler(
+				document.getElementById('btnCheck'),
+				'click',
+				function (event) {
+					console.log(document.forms[0].elements[1].checkValidity())
+				}
+			)
+			EventUtil.addHandler(
+				document.getElementById('btnWill'),
+				'click',
+				function (event) {
+					console.log(document.forms[0].elements[1].willValidate)
+				}
+			)
+		</script>
+	</body>
+</html>
