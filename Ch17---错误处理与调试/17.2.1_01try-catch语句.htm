@@ -8,8 +8,8 @@
         try {
             window.someNonexistentFunction();
         } catch (error){
-            alert(error.name);
-            alert(error.message);
+            console.log(error.name); // TypeError
+            console.error(error.message); // window.someNonexistentFunction is not a function
         }
         
     </script>

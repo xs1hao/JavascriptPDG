@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOMParser Example</title>
+</head>
+<body>
+    <p>This example will not work in Internet Explorer prior to version 9.</p>
+    <div id='div'></div>
+
+</body>
+<script type="text/javascript">
+    // DOMParser 将XML解析为DOM文档；
+    var parser = new DOMParser();
+    // parseFromString 方法接收两个参数： 1） 要解析的XML字符串； 2）内容类型；返回一个 Document实例；
+    var xmldom = parser.parseFromString("<root><child/></root>", "text/xml"); // 将一个简单的 XML 字符串，解析成了一个DOM文档；
+    // 在页面打印 xmldom  可见 他是一个 document 对象；
+    
+    var div = document.querySelector('#div');
+    div.innerHTML= xmldom;
+
+    console.log(xmldom.documentElement.tagName);  //"root"
+    console.log(xmldom.documentElement.firstChild.tagName); //"child"
+
+    
+    var anotherChild = xmldom.createElement("child");
+    xmldom.documentElement.appendChild(anotherChild);
+    
+    var children = xmldom.getElementsByTagName("child");
+    console.log(children.length);   //2
+    
+
+</script>
+</html>

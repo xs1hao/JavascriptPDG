@@ -15,11 +15,15 @@
         try {
             xmldom = parser.parseFromString("<root>", "text/xml");
             errors = xmldom.getElementsByTagName("parsererror");
+            // 通过 getElementsByTagName 查找 是否存在 parsererror 元素；确定是否发生解析错误；
             if (errors.length > 0){
+                // XMLSerializer 将 DOM 文档序列化为 XML 字符串；
+                // serializeToString 
                 throw new Error("XML Parsing Error:" + (new XMLSerializer()).serializeToString(xmldom, "text/xml"));
             }
         } catch (ex) {
-            alert(ex.message);
+            console.log(ex.message);
+            // 缺少 闭合的 root 标签；
         }
 
 

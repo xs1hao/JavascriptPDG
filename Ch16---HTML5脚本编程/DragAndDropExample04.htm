@@ -15,7 +15,7 @@
         var droptarget = document.getElementById("droptarget");
         
         function handleEvent(event){
-            document.getElementById("output").innerHTML += event.type + "<br>";
+            // document.getElementById("output").innerHTML += event.type + "<br>";
             if (event.type == "dropenter" || event.type == "dragover" || event.type=="drop"){
                 EventUtil.preventDefault(event);
             }

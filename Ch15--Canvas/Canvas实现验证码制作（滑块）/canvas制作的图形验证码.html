@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="120" height="40"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");//获取到canvas对象，演员
+        var context = canvas.getContext("2d");//获取到canvas的绘图环境，演员表演的舞台
+        draw();
+
+        canvas.onclick = function () {
+            context.clearRect(0, 0, 120, 40);
+            draw();
+        }
+        //获取到随机的颜色值
+        function getColor() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+        function draw() {
+            context.strokeRect(0, 0, 120, 40);
+            var aCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"];
+            for (var i = 0; i < 4; i++) {
+                var x = 20 + 20 * i;
+                var y = 20 + 10 * Math.random();
+                var index = Math.floor(Math.random() * aCode.length);//产生随机的索引值
+                var txt = aCode[index];//获取到随机的内容
+                context.fillStyle = getColor();
+                context.font = "bold 20px 微软雅黑";
+                context.translate(x, y);
+                var deg = Math.random() * 90 * Math.PI / 180;
+                context.rotate(deg);
+                context.fillText(txt, 0, 0);
+                context.rotate(-deg);
+                context.translate(-x, -y);
+            }
+
+            for (var i = 0; i < 8; i++) {
+                context.beginPath();//声明开始一个路径
+                context.moveTo(Math.random() * 120, Math.random() * 40);
+                context.lineTo(Math.random() * 120, Math.random() * 40);
+                context.strokeStyle = getColor();
+                context.stroke();//执行绘制
+            }
+
+            for (var i = 0; i < 20; i++) {
+                context.beginPath();//声明开始一个路径
+                var x = Math.random() * 120;
+                var y = Math.random() * 40;
+                context.moveTo(x, y);
+                context.lineTo(x + 1, y + 1);
+                context.strokeStyle = getColor();
+                context.stroke();//执行绘制
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -7,8 +7,14 @@
     <script type="text/javascript">
         function process(values){
         
+            // 在遇到throw 操作符时，代码就会停止执行；
             if (!(values instanceof Array)){
-                throw new Error("process(): Argument must be an array.");
+                // throw new Error("process(): Argument must be an array.");
+                throw new SyntaxError('syntax-error'); // 语法错误；
+                throw new TypeError('syntax-error'); // 类型错误；
+                throw new RangeError('syntax-error'); // 范围错误；
+                throw new EvalError('syntax-error'); // evel错误；
+                throw new ReferenceError('syntax-error'); // 引用错误；
             }
         
             values.sort();
