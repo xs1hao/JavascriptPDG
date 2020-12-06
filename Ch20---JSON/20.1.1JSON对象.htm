@@ -7,7 +7,7 @@
     <p>This example serializes an object and then parses that string into another object.</p>
     <script type="text/javascript">
         var book = {
-                       "title": "Professional JavaScript",
+                       "title": "Professional JavaScript Js",
                         "authors": [
                             "Nicholas C. Zakas"
                         ],
@@ -15,11 +15,13 @@
                         year: 2011
                    };
 
+        // ECMAScript5对解析JSON的行为进行了规范，定义了全局对象 JSON；
+        // JSON 对象有两个方法： 1) stringfy() 把JavaScript 对象序列化为JSON 字符串； 2） parse() 把 JSON 字符串解析为原生的JavaScript 值；                   
         var jsonText = JSON.stringify(book);
-        alert(jsonText);
+        console.log(jsonText);
         
         var bookCopy = JSON.parse(jsonText);
-        alert(bookCopy.title);
+        console.log(bookCopy.title);
     </script>
 </body>
 </html>

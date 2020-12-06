@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSON Stringify Example</title>
+	</head>
+	<body>
+		<p>
+			This example serializes an object and passes in a filter function.
+		</p>
+		<script type="text/javascript">
+			var book = {
+				title: 'Professional JavaScript', 
+				authors: ['Nicholas C. Zakas'],
+				edition: 3,
+				year: 2011,
+				toJSON: function () {
+					return this.title
+				},
+            }
+            // toJSON() 可以作为函数过滤器的补充；如果存在toJSON() 方法，而且能通过它取得有效的值，则调用该方法；否则返回对象本身。
+
+			var jsonText = JSON.stringify(book)
+			console.log(jsonText); // "Professional JavaScript"
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSON Stringify Example</title>
+	</head>
+	<body>
+		<p>
+			This example serializes an object and passes in a filter function.
+		</p>
+		<script type="text/javascript">
+			var book = {
+				title: 'Professional JavaScript',
+				authors: ['Nicholas C. Zakas'],
+				edition: 3,
+				year: 2011,
+			}
+
+            // 第三个参数如果是一个数字，那么他表示每个级别缩进的空格数；
+            // 最大缩进数为 10，如果参数大于 10 他会自动转换成 10 ；
+			var jsonText = JSON.stringify(book, null, 4)
+			console.log(jsonText)
+		</script>
+	</body>
+</html>

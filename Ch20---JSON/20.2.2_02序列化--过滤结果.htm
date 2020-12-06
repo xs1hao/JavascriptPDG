@@ -15,8 +15,22 @@
                         year: 2011
                    };
 
-        var jsonText = JSON.stringify(book, null, 4);
-        alert(jsonText);
+        var jsonText = JSON.stringify(book, function(key, value){
+            switch(key){
+                case "authors":
+                    return value.join(",")
+                 
+                case "year":
+                    return 5000;
+                    
+                case "edition":
+                    return undefined;
+                    
+                default:
+                    return value;
+            }
+        });
+        console.log(jsonText);
 
     </script>
 </body>

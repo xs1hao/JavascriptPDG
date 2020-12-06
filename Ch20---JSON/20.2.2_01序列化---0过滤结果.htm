@@ -1,0 +1,29 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>JSON Stringify Example</title>
+        </head>
+        <body>
+            <p>This example serializes an object and passes in a filter array.</p>
+            <script type="text/javascript">
+                var book = {
+                    title: 'Professional JavaScript',
+                    authors: ['Nicholas C. Zakas'],
+                    edition: 3,
+                    year: 2011,
+                }
+                /**
+                 * JSON.stringfy() 还可以接受两个参数：
+                 * 1) 第一个参数---是过滤器，可以是一个数组，也可以是一个函数；
+                 *   
+                 * 2) 第二个参数---是一个选项，表示是否在JSON 字符串中保留缩进。
+                 * **/
+
+                 // 如果过滤器是数组，那么 JSON.stringfy()的结果中将只包含数组中列出的熟悉；
+                var jsonText = JSON.stringify(book, ['title', 'edition'])
+                console.log(jsonText); // {"title":"Professional JavaScript","edition":3};
+
+            
+            </script>
+        </body>
+    </html>
