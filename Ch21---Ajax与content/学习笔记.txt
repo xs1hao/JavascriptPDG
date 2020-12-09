@@ -1,2 +1,13 @@
 1、HTTP1，HTTP2的概念？
 2、挥手握手是什么意思？
+3、何为跨域？
+4、浏览器错误码代表的意义？
+5、XMLHttpRequest 对象概念？
+    XML：Extensible Markup Language
+    XMLHttpRequest: Ajax技术的核心，通过http 在浏览器与服务器之间发送数据（XML数据和其他数据）；
+    Ajax：
+        Asynchronous Javascript And XML（异步 JavaScript 和 XML）；
+        是指一种创建交互式、快速动态网页应用的网页开发技术，无需重新加载整个网页的情况下，能够更新部分网页的技术。
+        通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。
+        这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+        Asynchronous  /eɪˈsɪŋkrənəs/ ： 异步的；不同时的；

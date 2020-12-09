@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>XHR Async Example</title>
+	</head>
+	<body>
+		<p>This example must be run on a server to work properly.</p>
+		<script>
+			function createXHR() {
+				if (typeof XMLHttpRequest != 'undefined') {
+					return new XMLHttpRequest()
+				} else if (typeof ActiveXObject != 'undefined') {
+					if (typeof arguments.callee.activeXString != 'string') {
+						var versions = [
+								'MSXML2.XMLHttp.6.0',
+								'MSXML2.XMLHttp.3.0',
+								'MSXML2.XMLHttp',
+							],
+							i,
+							len
+
+						for (i = 0, len = versions.length; i < len; i++) {
+							try {
+								var xhr = new ActiveXObject(versions[i])
+								arguments.callee.activeXString = versions[i]
+								return xhr
+							} catch (ex) {
+								//skip
+							}
+						}
+					}
+
+					return new ActiveXObject(arguments.callee.activeXString)
+				} else {
+					throw new Error('No XHR object available.')
+				}
+			}
+
+			/**
+			 * xhr.readyState 的五个状态值：
+			 * 0： 未初始化；
+			 * 1： 启动，已经调用open() 方法，但是还未send()；
+			 * 2： 发送，已经send()，还未接收到相应；
+			 * 3： 接收，已经接收到部分数据响应；
+			 * 4： 完成，已经接收到全部数据响应，而且可以再客户端使用。
+			 * **/
+			var xhr = createXHR()
+			xhr.onreadystatechange = function (event) {
+				if (xhr.readyState == 4) {
+					if (
+						(xhr.status >= 200 && xhr.status < 300) ||
+						xhr.status == 304
+					) {
+						alert(xhr.responseText)
+					} else {
+						alert('Request was unsuccessful: ' + xhr.status)
+					}
+				}
+			}
+			xhr.open('get', 'example.txt', true)
+			xhr.send(null)
+		</script>
+	</body>
+</html>
