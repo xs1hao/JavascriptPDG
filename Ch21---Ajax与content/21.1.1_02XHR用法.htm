@@ -39,12 +39,13 @@
 			/**
 			 * xhr.readyState 的五个状态值：
 			 * 0： 未初始化；
-			 * 1： 启动，已经调用open() 方法，但是还未send()；
-			 * 2： 发送，已经send()，还未接收到相应；
-			 * 3： 接收，已经接收到部分数据响应；
+			 * 1： 启动，已经调用open() 方法，但是还未调用 send()；
+			 * 2： 发送，已经send()，还未接收到响应；
+			 * 3： 接收，已经接收到部分数据响应，请求处理中；
 			 * 4： 完成，已经接收到全部数据响应，而且可以再客户端使用。
 			 * **/
-			var xhr = createXHR()
+            var xhr = createXHR()
+            // 每当 readyState 改变时，就会触发 onreadystatechange 事件。
 			xhr.onreadystatechange = function (event) {
 				if (xhr.readyState == 4) {
 					if (
@@ -58,7 +59,15 @@
 				}
 			}
 			xhr.open('get', 'example.txt', true)
-			xhr.send(null)
+            xhr.send(null)
+            
+            /**
+             * xhr.abort()
+             * 在收到响应之前，abort() 方法会来取消异步请求；
+             * 调用这个方法，会停止触发事件，而且也不再允许访问任何与响应有关的对象属性。
+             * **/
+
+
 		</script>
 	</body>
 </html>

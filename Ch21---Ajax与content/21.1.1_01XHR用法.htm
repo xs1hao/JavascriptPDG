@@ -37,8 +37,36 @@
 			}
 
 			var xhr = createXHR()
-			xhr.open('get', 'example.txt', false)
-			xhr.send(null)
+            /**
+            * open() 接收三个参数； 作用： 启动一个请求，以备发送；
+            *   1）要发送的请求里类型;
+            *   2）请求的url; 
+            *   3)是否异步发送请求, false 表示同步执行，即代码会等到服务器响应之后才会继续执行。
+            *
+            */
+			xhr.open('get', 'example.html', false)
+
+            /**
+                要发送特定的请求，必须使用 send()方法；
+                接收一个参数：作为请求主题发送的数据；如果不需要请求体发送数据，则必须传入null（这个参数对有些浏览器是必须的）；
+                调用send() 之后，请求就会被分派到服务器。
+            **/
+			xhr.send();
+
+            /**
+                responseText: 作为响应主体返回的文本；
+                responseXML: 针对 “text/xml”和“application/xml”，这个属性中保存包含着响应数据的 XML DOM 文档；
+                status: 响应的 HTTP 状态（状态码）---200，304,404,502等等；
+                statusText: HTTP 状态的说明---“OK”；
+                readyState: 请求响应过程的当前活动阶段（五个阶段）。
+                    0：未初始化，尚未调用open（）方法；
+                    1：启动，已经调用open（）方法，但是还没调用 send() 方法；
+                    2：发送，已经调用 send() 方法，但还未接收到响应；
+                    3：接收，已经接收到部分响应；
+                    4：完成，已经接收到全部响应，可以使用数据了。
+            
+            **/
+
 
 			if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
 				console.log(xhr.statusText); // ok
