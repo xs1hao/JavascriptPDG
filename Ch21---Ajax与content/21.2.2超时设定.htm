@@ -48,7 +48,7 @@
         };
         
         xhr.open("get", "timeout.php", true);
-        xhr.timeout = 1000;
+        xhr.timeout = 1000; // 在等待响应多少毫秒之后就终止；
         xhr.ontimeout = function(){
             alert("Request did not return in a second.");
         };        

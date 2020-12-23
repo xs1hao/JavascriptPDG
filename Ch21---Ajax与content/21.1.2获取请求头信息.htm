@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>XHR Async Example</title>
+		<title>XHR Response Headers Example</title>
 	</head>
 	<body>
 		<p>This example must be run on a server to work properly.</p>
-		<script>
+		<script type="text/javascript">
 			function createXHR() {
 				if (typeof XMLHttpRequest != 'undefined') {
 					return new XMLHttpRequest()
@@ -36,39 +36,26 @@
 				}
 			}
 
-			/**
-			 * xhr.readyState 的五个状态值：
-			 * 0： 未初始化；
-			 * 1： 启动，已经调用open() 方法，但是还未调用 send()；
-			 * 2： 发送，已经send()，还未接收到响应；
-			 * 3： 接收，已经接收到部分数据响应，请求处理中；
-			 * 4： 完成，已经接收到全部数据响应，而且可以再客户端使用。
-			 * **/
-            var xhr = createXHR()
-            // 每当 readyState 改变时，就会触发 onreadystatechange 事件。
+			var xhr = createXHR()
 			xhr.onreadystatechange = function (event) {
 				if (xhr.readyState == 4) {
 					if (
 						(xhr.status >= 200 && xhr.status < 300) ||
 						xhr.status == 304
 					) {
-						alert(xhr.responseText)
+						console.log(xhr.getAllResponseHeaders())
 					} else {
-						alert('Request was unsuccessful: ' + xhr.status)
+						console.log('Request was unsuccessful: ' + xhr.status)
 					}
 				}
-			}
-			xhr.open('get', 'example.txt', true)
-            xhr.send(null)
-            
+            }
             /**
-             * xhr.abort()
-             * 在收到响应之前，abort() 方法会来取消异步请求；
-             * 调用这个方法，会停止触发事件，而且也不再允许访问任何与响应有关的对象属性。
-             * 
+             * get 请求方式：
+             * 查询的字符串参数的名称和值，都必须使用 encodeURIComponent() 进行编码，所有名-值对，之间都是通过 &隔开；
              * **/
-
-
+			xhr.open('get', 'example.php', true)
+			xhr.setRequestHeader('MyHeader', 'MyValue')
+			xhr.send(null)
 		</script>
 	</body>
 </html>

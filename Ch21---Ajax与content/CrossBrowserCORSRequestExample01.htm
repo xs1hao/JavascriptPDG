@@ -20,7 +20,8 @@
             return xhr;
         }
 
-        var request = createCORSRequest("get", "http://www.somewhere-else.com/xdr.php");
+        // var request = createCORSRequest("get", "http://www.somewhere-else.com/xdr.php");
+        var request = createCORSRequest("get", "http://localhost:52330/example.php");
         if (request){
             request.onload = function(){
                 //do something with request.responseText

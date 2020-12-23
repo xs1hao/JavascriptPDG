@@ -44,7 +44,7 @@
             }
         };
         xhr.open("get", "example.php", true);
-        xhr.setRequestHeader("MyHeader", "MyValue");
+        xhr.setRequestHeader("Pragma", "MyValue"); // 设置请求头，必须在 open() 之后，send() 之前；
         xhr.send(null);
 
     </script>
