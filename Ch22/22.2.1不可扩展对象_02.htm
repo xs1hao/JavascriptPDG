@@ -7,7 +7,7 @@
     <p>This only works in browsers that natively support ECMAScript 5.</p>
     <script>
         var person = { name: "Nicholas" };
-        alert(Object.isExtensible(person));   //true
+        alert(Object.isExtensible(person));   //true isExtensible 判断对象是否可以扩展
         
         Object.preventExtensions(person);
         alert(Object.isExtensible(person));   //false

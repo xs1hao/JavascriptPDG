@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Function Binding Example</title>
+		<script type="text/javascript" src="EventUtil.js"></script>
+	</head>
+	<body>
+        <p>
+            函数绑定
+        </p>
+		<input type="button" id="my-btn" value="Click Me" />
+		<script type="text/javascript">
+			function bind(fn, context) {
+				return function () {
+					return fn.apply(context, arguments)
+                }
+			}
+
+			var handler = {
+				message: 'Event handled',
+
+				handleClick: function (event) {
+					console.log(this.message + ':' + event.type)
+				},
+            }
+            
+            // addHandler: function(element, type, handler){
+            //     if (element.addEventListener){
+            //         element.addEventListener(type, handler, false);
+            //     } else if (element.attachEvent){
+            //         element.attachEvent("on" + type, handler);
+            //     } else {
+            //         element["on" + type] = handler;
+            //     }
+            // }
+
+			var btn = document.getElementById('my-btn')
+			EventUtil.addHandler(
+				btn,
+				'click',
+				bind(handler.handleClick, handler)
+			)
+		</script>
+	</body>
+</html>

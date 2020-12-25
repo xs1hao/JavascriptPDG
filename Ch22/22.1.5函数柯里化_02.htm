@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Function Currying Example</title>
+		<script type="text/javascript" src="EventUtil.js"></script>
+	</head>
+	<body>
+		<p>
+			函数柯里化 用于创建一个已经设置好了一个或多个参数的函数。
+			<br />
+			Array.prototype.splice.apply合并数组；
+			<br />
+			Array.prototype.slice.apply可以将伪数组转换成数组；
+		</p>
+		<input type="button" id="my-btn" value="Click Me" />
+		<script type="text/javascript">
+			function bind(fn, context) {
+				var args = Array.prototype.slice.call(arguments, 2)
+				// 使用apply写法
+				// var args = Array.prototype.slice.apply(arguments, [2]);
+
+				// Array.prototype.slice.call(arguments,2)可以理解为 arguments.toArray().slice(2)
+				return function () {
+					var innerArgs = Array.prototype.slice.call(arguments),
+						finalArgs = args.concat(innerArgs)
+					return fn.apply(context, finalArgs)
+				}
+			}
+
+			var handler = {
+				message: 'Event handled',
+
+				handleClick: function (name, event) {
+					alert(this.message + ':' + name + ':' + event.type)
+				},
+			}
+
+			var btn = document.getElementById('my-btn')
+			EventUtil.addHandler(
+				btn,
+				'click',
+				bind(handler.handleClick, handler, 'my-btn')
+			)
+		</script>
+	</body>
+</html>

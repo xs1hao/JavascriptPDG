@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lazy Loading Example</title>
+	</head>
+	<body>
+        <p>
+            这个例子中使用的机枪是创建一个匿名、自执行的函数，用以确定应该使用哪一个函数实现。
+            优点：
+                避免执行不必要的代码。
+        </p>
+		<script type="text/javascript">
+			var createXHR = (function () {
+				if (typeof XMLHttpRequest != 'undefined') {
+					return function () {
+						return new XMLHttpRequest()
+					}
+				} else if (typeof ActiveXObject != 'undefined') {
+					return function () {
+						if (typeof arguments.callee.activeXString != 'string') {
+							var versions = [
+									'MSXML2.XMLHttp.6.0',
+									'MSXML2.XMLHttp.3.0',
+									'MSXML2.XMLHttp',
+								],
+								i,
+								len
+
+							for (i = 0, len = versions.length; i < len; i++) {
+								try {
+									new ActiveXObject(versions[i])
+									arguments.callee.activeXString = versions[i]
+									break
+								} catch (ex) {
+									//skip
+								}
+							}
+						}
+
+						return new ActiveXObject(arguments.callee.activeXString)
+					}
+				} else {
+					return function () {
+						throw new Error('No XHR object available.')
+					}
+				}
+			})()
+
+			var xhr1 = createXHR()
+			var xhr2 = createXHR()
+		</script>
+	</body>
+</html>

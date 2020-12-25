@@ -18,6 +18,7 @@
         alert(person1.job);      //"Software Engineer"
 
         var person2 = Person("Nicholas", 29, "Software Engineer");
+        // this 对象晚绑定，这里的this被解析成了window；
         alert(person2);         //undefined
         alert(window.name);     //"Nicholas"
         alert(window.age);      //29

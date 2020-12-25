@@ -4,10 +4,11 @@
     <title>Scope-Safe Constructors Example</title>
 </head>
 <body>
+    作用域安全的构造函数
     <script type="text/javascript">
     
         function Person(name, age, job){
-            if (this instanceof Person){
+            if (this instanceof Person){ // 为 this添加了一个检查并确保 this对象是 Person实例的 if判断
                 this.name = name;
                 this.age = age;
                 this.job = job;
@@ -17,11 +18,11 @@
         }
         
         var person1 = Person("Nicholas", 29, "Software Engineer");
-        alert(window.name);   //""
-        alert(person1.name);  //"Nicholas"
+        console.log(window.name);   //""
+        console.log(person1.name);  //"Nicholas"
         
         var person2 = new Person("Shelby", 34, "Ergonomist");
-        alert(person2.name);  //"Shelby"
+        console.log(person2.name);  //"Shelby"
 
 
     </script>
