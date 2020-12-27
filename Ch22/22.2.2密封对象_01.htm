@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sealed Objects Example</title>
+	</head>
+	<body>
+		<p>This only works in browsers that natively support ECMAScript 5.</p>
+		<p>密封对象：</p>
+		<p>密封对象不可扩展，不能删除属性和方法；</p>
+		<p>密封对象，可以修改其 value 值；</p>
+		<script>
+			var person = { name: 'Nicholas', sex: 'nan' }
+			Object.seal(person)
+
+			person.age = 29
+			console.log(person.age) //undefined
+
+			delete person.name
+			console.log(person.name) //"Nicholas"
+			person.sex = 'nv'
+            console.log(person.sex) //"nv"
+
+            /**
+             * Object.defineProperty();
+             * 静态方法Object.defineProperty()直接在对象上定义新属性，或修改对象上的现有属性，然后返回对象。
+             * **/
+            var Object1 = new Object(null);
+            Object.defineProperty(Object1, 'school',{
+                value: 'shenzhen'
+            });
+            console.log(Object1);
+		</script>
+	</body>
+</html>

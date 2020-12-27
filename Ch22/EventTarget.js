@@ -5,14 +5,17 @@ function EventTarget(){
 EventTarget.prototype = {
     constructor: EventTarget,
 
+    // target.addHandler("message", handleMessage);
     addHandler: function(type, handler){
         if (typeof this.handlers[type] == "undefined"){
             this.handlers[type] = [];
         }
 
         this.handlers[type].push(handler);
+        console.log(this.handlers);
     },
-    
+
+    // target.fire({ type: "message", message: "Hello world!"});
     fire: function(event){
         if (!event.target){
             event.target = this;

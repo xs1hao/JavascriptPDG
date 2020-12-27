@@ -5,6 +5,13 @@
 </head>
 <body>
     <p>This only works in browsers that natively support ECMAScript 5.</p>
+    <p>
+        冻结对象（可以防止修改库中的核心对象）；
+    </p>
+    <p>
+        冻结对象：
+        对象不可以扩展，也是密封的（不可以删除），不可以修改
+    </p>
     <script>
         var person = { name: "Nicholas" };
         Object.freeze(person);

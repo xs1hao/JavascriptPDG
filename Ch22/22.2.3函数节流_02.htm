@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <title>Throttling Example</title>
+</head>
+<body>
+    <p>
+        input框输入内容，使用节流函数
+    </p>
+    <input type="text" id="box" onkeyup="myFunction()"/>
+    <script type="text/javascript">
+        function throttle(method, scope) {
+            clearTimeout(method.tId);
+            method.tId= setTimeout(function(){
+                method.call(scope);
+            }, 500);
+        }
+    
+        function doSmothing() {
+            console.log(myDiv.value);
+        }
+        let myDiv = document.getElementById('box');
+        let myFunction = function() {
+            throttle(doSmothing)
+        }
+  
+
+
+    </script>
+</body>
+</html>
